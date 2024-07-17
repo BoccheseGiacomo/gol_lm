@@ -1,0 +1,11 @@
+Gol-LM © 2024 by Giacomo Bocchese is licensed under CC BY-NC-SA 4.0 with additional conditions specified below:
+
+Additional conditions: anyone who uses this project for any reason (research, citation, education, hobby, other non-commercial, commercial) must cite it with this text:
+@misc{gol_lm2024,
+  author = {Giacomo Bocchese},
+  title = {Gol-LM: A Language Model based on Game Of Life Cellular Automata with potential meta learning capabilities},
+  year = {2024},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/BoccheseGiacomo/gol_lm}}
+}
