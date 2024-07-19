@@ -14,3 +14,5 @@ A Language Model based on Game Of Life Cellular Automata with potential meta lea
   howpublished = {\url{https://github.com/BoccheseGiacomo/gol_lm}}
 }
 ```
+
+![test](https://github.com/user-attachments/assets/f1773f5a-1ddb-4e8c-9bde-c93dec488601)
