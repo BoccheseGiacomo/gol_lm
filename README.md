@@ -10,7 +10,7 @@ Distinctive to Gol-LM is its ability to achieve spontaneous meta-learning, facil
 
 As a language model, Gol-LM translates input sequences into coherent language predictions through iterative evolution and adaptation. The model's learning process is guided by external feedback, which informs its internal state adjustments and enhances its predictive accuracy over time.
 
-It is important to note that Gol-LM is in a highly experimental stage. Many theoretical aspects are derived from rigorous deduction and intuition based on known principles in deep learning and emergent systems. The forthcoming phases of the project are exploratory, aiming to systematically uncover the model's capabilities and constraints. These steps are essential for transitioning from theoretical constructs to empirical results, advancing our understanding of cellular automata-based language modeling.
+It is important to note that Gol-LM is in a highly experimental stage. Many theoretical aspects are derived from rigorous deduction and intuition based on known principles in machine learning and emergent systems, but may not be proved enough. The forthcoming phases of the project are exploratory, aiming to systematically uncover the model's capabilities and constraints. These steps are essential for transitioning from theoretical constructs to empirical results, advancing our understanding of cellular automata-based language modeling.
 
 <div>
   <img src="https://github.com/user-attachments/assets/f1773f5a-1ddb-4e8c-9bde-c93dec488601" alt="Gol-LM Simulation" width="auto" height="auto">
