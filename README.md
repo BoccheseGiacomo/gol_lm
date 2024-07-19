@@ -18,8 +18,6 @@ A Language Model based on Game Of Life Cellular Automata with potential meta lea
 ![gollmpreview](https://github.com/user-attachments/assets/339917d0-55de-4d41-9a30-a993c80bbdf3)
 
 
-![test](https://github.com/user-attachments/assets/f1773f5a-1ddb-4e8c-9bde-c93dec488601)
-
 <div>
   <img src="https://github.com/user-attachments/assets/f1773f5a-1ddb-4e8c-9bde-c93dec488601" alt="Gol-LM Simulation" width="auto" height="auto">
   <p><em>Figure 1: A showing the inference process of a random, non trained, Gol-LM.</em></p>
