@@ -16,7 +16,9 @@ A Language Model based on Game Of Life Cellular Automata with potential meta lea
 ```
 
 ![gollmpreview](https://github.com/user-attachments/assets/339917d0-55de-4d41-9a30-a993c80bbdf3)
-*State space dimension: 61x50 = 3050 cells
+
+*Figure 1:
+State space dimension: 61x50 = 3050 cells
 Vocabulary dimension: 11 ; Symbols : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '|']
 Spacing between input cells: 5*
 
