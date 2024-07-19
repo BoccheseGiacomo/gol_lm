@@ -32,7 +32,7 @@ It is important to note that Gol-LM is in a highly experimental stage. Many theo
 }
 ```
 
-### Project Vision and Objectives
+## Project Vision and Objectives
 
 Gol-LM is envisioned as a language model with an inherent capacity for learning and adaptability, built upon the principles of the Game of Life (GoL) cellular automaton. The central goal of Gol-LM is to demonstrate the emergence of sophisticated language modeling behaviors and the ability to develop internal algorithms, given sufficient two-dimensional space and computation time. The project is anchored in several key objectives:
 
