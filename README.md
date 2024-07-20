@@ -101,3 +101,60 @@ Training Gol-LM presents unique challenges due to its reliance on the Game of Li
 **Complex Training Dynamics:** Leveraging the theoretical capabilities of GoL within Gol-LM is an ambitious task. The training process involves enabling the model to propagate information effectively, construct intricate internal algorithms, and develop reinforcement learning mechanisms that improve its performance over time. The model's ability to achieve sophisticated language understanding and generation through iterative state evolution requires careful tuning and exploration.
 
 **Alternatives:** While genetic algorithms are the primary focus due to their versatility and minimal assumptions about the data and processes, other zeroth-order optimization techniques can also be considered, like Simulated Annealing, Particle Swarm Optimization, Bayesian Optimization or some RL techniques.
+
+## Training Phase of Gol-LM with Genetic Algorithms
+
+### Components and Initialization
+
+In the training phase of Gol-LM, the primary component subject to training is:
+
+- **Initial State of the Grid:** This includes the entire grid or a subset of it, with some parts potentially fixed to a specific state to ensure stability and functionality. The GoL rules are typically kept fixed, given their Turing completeness, allowing the model to represent any computable function by modifying the initial state.
+
+The training process begins with the random initialization of these initial states across a population of \( n \) Gol-LM models. Each model in the population is uniquely characterized by its own initial state configuration.
+
+### Simulation and Selection
+
+1. **Running Simulations:** For each model in the population, a simulation is run where the model processes given input tokens and generates output tokens. During this phase, the model evolves through the GoL rules, and the output is evaluated based on its alignment with the expected next token. Random mutations can also be applied in runtime to introduce variability and encourage exploration of the solution space.
+
+2. **Evaluation and Reward Calculation:** The performance of each model is assessed based on how accurately the generated outputs match the expected next tokens. This can be quantified using metrics such as prediction accuracy or other suitable loss functions. In future versions, human feedback can also be integrated to refine the reward calculation.
+
+3. **Selection of the Best Models:** Post-simulation, models are evaluated based on their performance. The best-performing models, those that most accurately predicted the next tokens and utilized the reward effectively, are selected for the next stage.
+
+4. **Reproduction with Genetic Operators:** The selected models undergo reproduction, where genetic operations like mutation and crossover are applied. This step generates a new population of models, inheriting and varying traits from the successful models of the previous generation. Random mutations are also introduced to maintain diversity and prevent premature convergence.
+
+5. **Iterative Process:** This process of simulation, evaluation, selection, and reproduction is repeated over multiple generations. With each iteration, the models are expected to progressively improve in their language modeling capabilities, developing more sophisticated and effective internal algorithms.
+
+### Continual Learning and Stability
+
+Even when the model is fully trained, Gol-LM is designed to continually apply multiple copies that evolve using genetic algorithms. This continual learning approach ensures that the model can adapt to new data and evolving language patterns over time. By maintaining a dynamic population of models, Gol-LM can mitigate potential instabilities in the state space, ensuring stability and convergence. This ongoing evolutionary process helps prevent divergence and maintains the robustness of the algorithm.
+
+### Emergence of Meta-Learning
+
+The emergence of meta-learning within Gol-LM is anticipated due to the system's inherent flexibility and capacity to model a wide range of algorithms, including internal optimizers. Theoretically, if a Gol-LM instance, by chance, develops the ability to internally update its state in response to external rewards, it would demonstrate faster and more efficient learning compared to other instances. Such a model would have a higher likelihood of being selected in the genetic algorithm (GA) process, thereby propagating its traits to subsequent generations.
+
+Over time, this evolutionary pressure leads to the dominance of models capable of such internal learning optimizations, making meta-learning an emergent standard within the population. This process hinges on the principle that models which can internally incorporate reward information to refine their state will outperform and outlast those that do not. Consequently, models with meta-learning capabilities will naturally emerge and become prevalent in the Gol-LM population.
+
+The same evolutionary principles apply to self-reinforcement learning. Models that, by chance, develop the ability to engage in self-reinforcement learning—where internal reward mechanisms guide behavior towards optimal solutions—will have a selective advantage. These models simulate scenarios, hypothesize outcomes, and generate synthetic data and rewards internally, allowing them to strategize and evolve towards optimal behaviors more effectively.
+
+### Current State and Future Directions
+
+#### Current Progress
+
+As of now, the Gol-LM project is in its early developmental phase. The foundational model has been established, but it has yet to be applied or tested in practical scenarios. Key aspects like training methodologies and their effectiveness in achieving desired behaviors are still theoretical and await empirical validation. To date, no concrete results have been achieved; the project remains in the realm of setup and initial exploration.
+
+#### Future Steps
+
+Looking ahead, the project has several critical milestones to achieve:
+
+**Implementing a Genetic Algorithm:** The initial phase of training will involve the implementation of a genetic algorithm. This step is fundamental for basic training and setting the groundwork for more advanced learning processes.
+
+**Task Learning Without Reward:** An early experiment will involve attempting to train Gol-LM to learn a specific task using the genetic algorithm alone, without any external reward mechanism. This test aims to explore Gol-LM's capabilities in a more constrained learning environment.
+
+**Extensive Training with Rewards:** The subsequent phase will focus on extensively training Gol-LM across a variety of tasks while incorporating external rewards. The goal here is to observe and measure the emergence of meta-learning. This stage is crucial for understanding whether and how Gol-LM develops its internal learning strategies and adapts to diverse challenges.
+
+**Transitioning to 3-Dimensional Cellular Automata:** To enhance the complexity of the behaviors, we plan to transform Gol-LM to a 3D cellular automaton system. By adding an additional dimension, we aim to increase the model's capacity for storing and processing information, potentially leading to more sophisticated and stable behavior. This transition is expected to facilitate the spontaneous evolution of more complex computational pathways.
+
+**Experimenting with Stochastic GoL:** Another future direction involves experimenting with stochastic versions of the Game of Life. In a stochastic GoL, state transitions incorporate elements of randomness, which can introduce variability and potentially enhance the robustness and adaptability of the model. By integrating stochasticity, Gol-LM can explore a broader range of behaviors and solutions, further enriching its learning and generalization capabilities. Furthermore, it allows to remove the random mutation part of the genetic algorithm and let the model internally organize in order to mutate in the most efficient way and keep itself on the criticality boundary where randomness (mutations) and order are balanced in the optimal way to increase reward faster.
+
+
+
