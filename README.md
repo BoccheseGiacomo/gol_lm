@@ -10,7 +10,7 @@ Distinctive to Gol-LM is its ability to achieve spontaneous meta-learning, facil
 
 As a language model, Gol-LM translates input sequences into coherent language predictions through iterative evolution and adaptation. The model's learning process is guided by external feedback, which informs its internal state adjustments and enhances its predictive accuracy over time.
 
-It is important to note that Gol-LM is in a highly experimental stage. Many theoretical aspects are derived from rigorous deduction and intuition based on known principles in machine learning and emergent systems, but may not be proved enough. The forthcoming phases of the project are exploratory, aiming to systematically uncover the model's capabilities and constraints. These steps are essential for transitioning from theoretical constructs to empirical results, advancing our understanding of cellular automata-based language modeling.
+It is important to note that Gol-LM is in a highly experimental stage. Many theoretical aspects are derived from rigorous deduction and intuition based on known principles in machine learning and emergent systems, but may not be proved enough. The forthcoming phases of the project are exploratory, aiming to systematically uncover the model's capabilities and constraints. These steps are essential for transitioning from theoretical constructs to empirical results, advancing our understanding of cellular automata-based language modeling. The training part is not implemented yet.
 
 This work is inspired from my previous project: the [Convolutional Turing machine](https://github.com/BoccheseGiacomo/ConvolutionalTuringMachine). The key difference between the two is that this uses discrete states (Conway's GOL), while the other uses convolution-based cellular automata (similar to Lenia cellular automata). Furthermore, this was developed with a specific focus on language modeling.
 
@@ -48,11 +48,12 @@ Gol-LM is envisioned as a language model with an inherent capacity for learning 
 
 **Enhanced Reasoning Capabilities**: Gol-LM aims to exhibit superior reasoning capabilities compared to neural network-based algorithms. By incorporating flow control and halting mechanisms, Gol-LM can learn and execute complex algorithms rather than relying on approximation or interpolation, which often leads to raw memorization. This approach is expected to enhance the model's grokking and generalization capabilities, enabling it to better understand and process language tasks.
 
-**Evolutionary Training**: The training process of Gol-LM relies on genetic algorithms (or other black box optimization algorithms), emphasizing the exploration of diverse initial states and evolutionary strategies. This approach aligns with the non-differentiable nature of GoL and facilitates the iterative improvement of internal algorithms. Through the selection of the best-performing states and the application of genetic operations, Gol-LM evolves to enhance its language modeling capabilities over successive generations, and may learn to exploit reward information in order to build internal emergent optimizers.
+**Evolutionary Training**: The training process of Gol-LM relies on genetic algorithms (or other black box optimization algorithms), emphasizing the exploration of diverse initial states and evolutionary strategies. This approach aligns with the non-differentiable nature of GoL and facilitates the iterative improvement of internal algorithms. Through the selection of the best-performing states and the application of genetic operations, Gol-LM evolves to enhance its language modeling capabilities over successive generations, and may learn to exploit reward information in order to build internal emergent optimizers. This training part has been extensively planned but it's not implemented yet in the code.
+
+**Not only language modeling**: The model is initially developed for language modeling tasks, but with minimal modifications it can be adapted to other settings, like driving an agent in RL settings.
 
 Gol-LM represents a cutting-edge exploration into the potential of cellular automata for advanced language modeling, combining principles of Turing completeness, meta-learning, and evolutionary optimization to push the boundaries of adaptive computational systems.
 
-**Not only language modeling**: The model is initially developed for language modeling tasks, but with minimal modifications it can be adapted to other settings, like driving an agent in RL settings.
 
 ## Internal Mechanics Description
 
