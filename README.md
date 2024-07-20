@@ -92,6 +92,4 @@ Gol-LM dynamically determines halting based on output accumulation, ensuring eff
 *Note: there are two nested iterative processes; the internal loop governs the process of generating a single token, and continues until a halting condition determined by output accumulation going over a threshold. The external loop governs the generation of an entire sentence token by token, and halts when the end of sentence token is generated.*
 *Furthermore, the memorization of the sentence is done inside the state space. Given the token **x_t** , we generate the token **x_t+1**, like in RNNs and differently from the transformers, where the entire sequence is given as input at each time step. This may arise long term memory issues, but the genetic algorithm training should allow for the development of internal mechanism to balance short and long term memory in order to minimize loss. Obiously, the larger is the state space the larger is the amount of storable memory*
 
-### Iterative Evolution and Halting
 
-Gol-LM dynamically determines halting based on output accumulation, ensuring efficient computation tailored to input and task complexity. This iterative process allows Gol-LM to represent complex internal algorithms for superior language modeling.
