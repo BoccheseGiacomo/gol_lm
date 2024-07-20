@@ -166,6 +166,7 @@ The training part is not implemented yet.
 ### Requirements
 The requirements are the standard ones for scientific computing: Numpy, Matplotlib.
 You also need the TkAgg interface for matplotlib (in some cases it may be not installed automatically).
+Since this is an early implementation, it may still contain some bugs.
 
 ### Files
 The files provided are python files or jupyter notebooks. Python files contain the core logic and classes of Gol-LM to be used as libraries and imported in jupyter notebook files where we perform tests.
