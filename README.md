@@ -136,13 +136,13 @@ Over time, this evolutionary pressure leads to the dominance of models capable o
 
 The same evolutionary principles apply to self-reinforcement learning. Models that, by chance, develop the ability to engage in self-reinforcement learning—where internal reward mechanisms guide behavior towards optimal solutions—will have a selective advantage. These models simulate scenarios, hypothesize outcomes, and generate synthetic data and rewards internally, allowing them to strategize and evolve towards optimal behaviors more effectively.
 
-### Current State and Future Directions
+## Current State and Future Directions
 
-#### Current Progress
+### Current Progress
 
 As of now, the Gol-LM project is in its early developmental phase. The foundational model has been established, but it has yet to be applied or tested in practical scenarios. Key aspects like training methodologies and their effectiveness in achieving desired behaviors are still theoretical and await empirical validation. To date, no concrete results have been achieved; the project remains in the realm of setup and initial exploration.
 
-#### Future Steps
+### Future Steps
 
 Looking ahead, the project has several critical milestones to achieve:
 
@@ -156,5 +156,20 @@ Looking ahead, the project has several critical milestones to achieve:
 
 **Experimenting with Stochastic GoL:** Another future direction involves experimenting with stochastic versions of the Game of Life. In a stochastic GoL, state transitions incorporate elements of randomness, which can introduce variability and potentially enhance the robustness and adaptability of the model. By integrating stochasticity, Gol-LM can explore a broader range of behaviors and solutions, further enriching its learning and generalization capabilities. Furthermore, it allows to remove the random mutation part of the genetic algorithm and let the model internally organize in order to mutate in the most efficient way and keep itself on the criticality boundary where randomness (mutations) and order are balanced in the optimal way to increase reward faster.
 
+## Installation and Usage
 
+The installation process is manual and you need to clone/download this repository and execute it in your python environment.
+During execution a popup window will appear where you can visualize the inference process.
+The training part is not implemented yet.
 
+### Requirements
+The requirements are the standard ones for scientific computing: Numpy, Matplotlib.
+You also need the TkAgg interface for matplotlib (in some cases it may be not installed automatically).
+
+### Files
+The files provided are python files or jupyter notebooks. Python files contain the core logic and classes of Gol-LM to be used as libraries and imported in jupyter notebook files where we perform tests.
+
+- gol_lm_base.py       -> Base implementation, without meta-learning and reward settings
+- gol_lm_metalearn.py  -> Experimental implementation, with meta-learning
+- test_base.ipynb      -> Test for the base implementation
+- test_metalearn.ipynb -> Test for the meta-learning setting 
