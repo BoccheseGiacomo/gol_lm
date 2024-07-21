@@ -1,10 +1,13 @@
 # Gol-LM
 A Language Model based on Game Of Life Cellular Automata with potential meta learning capabilities.
+Note: some aspects of this study are hypotized but are not completely proved yet.
 
 *Gol-LM © 2024 by Giacomo Bocchese is licensed under CC BY-NC-SA 4.0 with additional conditions specified in the LICENSE file.*
 
 ## Abstract
 Gol-LM is an experimental research project focused on developing an adaptive language model using the principles of the Game of Life (GoL) cellular automaton. By harnessing the Turing completeness of GoL (finite memory approximation in my implementation), Gol-LM enables the formation and evolution of sophisticated internal algorithms within a two-dimensional grid. The plan is to use genetic algorithms for evolutionary optimization of the model, positioning Gol-LM as a robust and flexible language model capable of complex computational tasks.
+
+The key idea behind Gol-LM is to infuse information as boundary conditions into the Gol board, that evolves in response to boundary conditions setted, and then when halting, retrieving states in special cells called output cells.
 
 Distinctive to Gol-LM is its potential ability to achieve spontaneous meta-learning, facilitating the emergence of self-reinforcement learning and dynamic memory organization. This capability allows the model to autonomously evolve internal optimization strategies, adapting its behavior based on external rewards. This mirrors natural processes where complexity and adaptability arise from non-linear, interactive systems that evolve towards optimal solutions.
 
@@ -59,7 +62,8 @@ Gol-LM represents a cutting-edge exploration into the potential of cellular auto
 
 ### Initial Setup and Configuration
 
-Gol-LM operates on a two-dimensional grid, with each cell representing its state within the Game of Life (GoL) cellular automaton. The grid is divided into specific regions:
+Gol-LM operates on a two-dimensional grid, with each cell representing its state within the Game of Life (GoL) cellular automaton. inputs and rewards are forced as boundary conditions on the Gol board.
+The grid is divided into specific regions:
 
 ![gollmpreview](https://github.com/user-attachments/assets/339917d0-55de-4d41-9a30-a993c80bbdf3)
 
@@ -109,15 +113,15 @@ Training Gol-LM presents unique challenges due to its reliance on the Game of Li
 
 In the training phase of Gol-LM, the primary component subject to training is:
 
-- **Initial State of the Grid:** This includes the entire grid or a subset of it, with some parts potentially fixed to a specific state to ensure stability and functionality. The GoL rules are typically kept fixed, given their Turing completeness, allowing the model to represent any computable function by modifying the initial state.
+- **Initial State of the Grid:** This includes the entire grid or a subset of it, with some parts potentially fixed to a specific state to ensure stability and functionality. The GoL rules are typically kept fixed, given their Turing completeness, allowing the model to represent any computable function by modifying the initial state only.
 
-The training process begins with the random initialization of these initial states across a population of \( n \) Gol-LM models. Each model in the population is uniquely characterized by its own initial state configuration.
+The training process begins with the random initialization of these initial states across a population of \(n\) Gol-LM models. Each model in the population is uniquely characterized by its own initial state configuration.
 
 ### Simulation and Selection
 
-1. **Running Simulations:** For each model in the population, a simulation is run where the model processes given input tokens and generates output tokens. During this phase, the model evolves through the GoL rules, and the output is evaluated based on its alignment with the expected next token. Random mutations can also be applied in runtime to introduce variability and encourage exploration of the solution space.
+1. **Running Simulations:** For each model in the population, a simulation is run where the model processes given input tokens and generates output tokens. During this phase, the model evolves through the GoL rules, and the output is evaluated based on its alignment with the expected next token. Random mutations can also be applied in runtime to introduce variability and encourage exploration of the solution space. Random mutations also force the system to develop self-healing and robustness techniques, making the model more anti-fragile.
 
-2. **Evaluation and Reward Calculation:** The performance of each model is assessed based on how accurately the generated outputs match the expected next tokens. This can be quantified using metrics such as prediction accuracy or other suitable loss functions. In future versions, human feedback can also be integrated to refine the reward calculation.
+2. **Evaluation and Reward Calculation:** The performance of each model is assessed based on how accurately the generated outputs match the expected next tokens. This can be quantified using metrics such as prediction accuracy or other suitable loss functions. In future versions, human feedback reward can also be integrated.
 
 3. **Selection of the Best Models:** Post-simulation, models are evaluated based on their performance. The best-performing models, those that most accurately predicted the next tokens and utilized the reward effectively, are selected for the next stage.
 
@@ -127,15 +131,18 @@ The training process begins with the random initialization of these initial stat
 
 ### Continual Learning and Stability
 
-Even when the model is fully trained, Gol-LM is designed to continually apply multiple copies that evolve using genetic algorithms. This continual learning approach ensures that the model can adapt to new data and evolving language patterns over time. By maintaining a dynamic population of models, Gol-LM can mitigate potential instabilities in the state space, ensuring stability and convergence. This ongoing evolutionary process helps prevent divergence and maintains the robustness of the algorithm.
+Even when the model is fully trained, Gol-LM is designed to continually evolve multiple copies using genetic algorithms. This continual learning approach ensures that the model can adapt to new data and evolving language patterns over time even if the "meta-learning" doesn't emerge. By maintaining a dynamic population of models, Gol-LM can mitigate potential instabilities in the state space, ensuring stability and convergence. This ongoing evolutionary process helps prevent divergence and maintains the robustness of the algorithm.
+Gol-LM + continual evolutionary training -> anti-fragile model.
 
 ### Emergence of Meta-Learning
 
-The emergence of meta-learning within Gol-LM is anticipated due to the system's inherent flexibility and capacity to model a wide range of algorithms, including internal optimizers. Theoretically, if a Gol-LM instance, by chance, develops the ability to internally update its state in response to external rewards, it would demonstrate faster and more efficient learning compared to other instances. Such a model would have a higher likelihood of being selected in the genetic algorithm (GA) process, thereby propagating its traits to subsequent generations.
+The emergence of meta-learning within Gol-LM is anticipated due to the system's inherent flexibility and capacity to model a wide range of algorithms, including internal optimizers. Theoretically, if a Gol-LM instance, by chance, develops the ability to internally update its state in response to external rewards, it would demonstrate faster and more efficient learning compared to other instances. This is allowed since Gol is turing complete and can represent any algorithm exploiting inputs given as boundary conditions like reward.
+
+Such a model would have a higher likelihood of being selected in the genetic algorithm (GA) process, thereby propagating its traits to subsequent generations.
 
 Over time, this evolutionary pressure leads to the dominance of models capable of such internal learning optimizations, making meta-learning an emergent standard within the population. This process hinges on the principle that models which can internally incorporate reward information to refine their state will outperform and outlast those that do not. Consequently, models with meta-learning capabilities will naturally emerge and become prevalent in the Gol-LM population.
 
-The same evolutionary principles apply to self-reinforcement learning. Models that, by chance, develop the ability to engage in self-reinforcement learning—where internal reward mechanisms guide behavior towards optimal solutions—will have a selective advantage. These models simulate scenarios, hypothesize outcomes, and generate synthetic data and rewards internally, allowing them to strategize and evolve towards optimal behaviors more effectively.
+The same evolutionary principles apply to self-reinforcement learning. Models that, by chance, develop the ability to engage in self-reinforcement learning—where internal reward mechanisms guide behavior towards optimal solutions—will have a selective advantage. These models automatically discount reward and future expectations, and may learn to simulate scenarios, hypothesize outcomes, and generate synthetic data and rewards internally, allowing them to strategize and evolve towards optimal behaviors more effectively.
 
 ## Current State and Future Directions
 
@@ -161,6 +168,7 @@ Looking ahead, the project has several critical milestones to achieve:
 
 The installation process is manual and you need to clone/download this repository and execute it in your python environment.
 During execution a popup window will appear where you can visualize the inference process.
+Internal state variables are easy to access and the project is built in order to make it easily customizable.
 The training part is not implemented yet.
 
 ### Requirements
@@ -169,7 +177,7 @@ You also need the TkAgg interface for matplotlib (in some cases it may be not in
 Since this is an early implementation, it may still contain some bugs.
 
 ### Files
-The files provided are python files or jupyter notebooks. Python files contain the core logic and classes of Gol-LM to be used as libraries and imported in jupyter notebook files where we perform tests.
+The files provided are python files and jupyter notebooks. Python files contain the core logic and classes of Gol-LM to be used as libraries and imported in jupyter notebook files where we perform tests.
 
 - gol_lm_base.py       -> Base implementation, without meta-learning and reward settings
 - gol_lm_metalearn.py  -> Experimental implementation, with meta-learning
