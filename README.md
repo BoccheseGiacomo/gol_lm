@@ -1,13 +1,13 @@
 # Gol-LM
 A Language Model based on Game Of Life Cellular Automata with potential meta learning capabilities.
-Note: some aspects of this study are hypotized but are not completely proved yet.
+Note: some aspects of this study are hypothesized but are not completely proved yet.
 
 *Gol-LM © 2024 by Giacomo Bocchese is licensed under CC BY-NC-SA 4.0 with additional conditions specified in the LICENSE file.*
 
 ## Abstract
-Gol-LM is an experimental research project focused on developing an adaptive language model using the principles of the Game of Life (GoL) cellular automaton. By harnessing the Turing completeness of GoL (finite memory approximation in my implementation), Gol-LM enables the formation and evolution of sophisticated internal algorithms within a two-dimensional grid. The plan is to use genetic algorithms for evolutionary optimization of the model, positioning Gol-LM as a robust and flexible language model capable of complex computational tasks.
+Gol-LM is an experimental research project focused on developing an adaptive language model using the principles of the Game of Life (GoL) cellular automaton. By harnessing the Turing completeness of GoL (finite memory approximation in my implementation), Gol-LM enables the formation and evolution of sophisticated internal algorithms within a two-dimensional grid. The plan is to use genetic algorithms for evolutionary optimization of the model, but the emergent meta-learning internal optimizers should surpass the speed of genetic training, accelerating the entire process. The genetic algorithm makes the model able not only to learn, but to learn how to learn.
 
-The key idea behind Gol-LM is to infuse information as boundary conditions into the Gol board, that evolves in response to boundary conditions setted, and then when halting, retrieving states in special cells called output cells.
+The key idea behind Gol-LM is to infuse information as boundary conditions into the GoL board, which evolves in response to these conditions. Upon halting, states are retrieved from special cells called output cells.
 
 Distinctive to Gol-LM is its potential ability to achieve spontaneous meta-learning, facilitating the emergence of self-reinforcement learning and dynamic memory organization. This capability allows the model to autonomously evolve internal optimization strategies, adapting its behavior based on external rewards. This mirrors natural processes where complexity and adaptability arise from non-linear, interactive systems that evolve towards optimal solutions.
 
@@ -43,9 +43,9 @@ Gol-LM is envisioned as a language model with an inherent capacity for learning 
 
 **Complex Behavior Simulation**: The GoL rules serve as a powerful mechanism to simulate complex behaviors within Gol-LM. By evolving patterns that mimic the dynamics observed in nonlinear systems, Gol-LM can model intricate processes, potentially emulating the computational structures required for advanced language tasks.
 
-**Halting and Flow Control**: Introducing a halting mechanism in Gol-LM is crucial for expanding its computational repertoire, particularly for implementing flow control in language processing tasks. This mechanism allows for controlled looping and iterative operations, broadening the range of computable functions. By self-managing computation length and iterative processes, Gol-LM enhances its ability to represent diverse language functions through autoregressivity. This aspect is integral to achieving Turing completeness, where the model can potentially simulate any computation given unbounded state space and time.
+**Halting and Flow Control**: Introducing a halting mechanism in Gol-LM is crucial for expanding its computational repertoire, particularly for implementing flow control in language processing tasks. This mechanism allows for controlled looping and iterative operations, broadening the range of computable functions. By self-managing computation length and iterative processes, Gol-LM enhances its ability to represent diverse language functions through autoregression. This aspect is integral to achieving Turing completeness, where the model can potentially simulate any computation given unbounded state space and time.
 
-**Meta-Learning**: Gol-LM is designed to autonomously develop internal reinforcement learning algorithms, driven by external rewards. These internal algorithms enable the model to learn and optimize its language processing capabilities more efficiently than relying solely on external optimization methods such as genetic algorithms. Through meta-learning, Gol-LM can adaptively improve its performance and generalize across various language tasks in an online, continual way. The model will learn the best inductive biases that practically work and interiorize them. Via external rewards it can learn to learn in a much faster way than provided with external optimizers.
+**Meta-Learning**: Gol-LM is designed to autonomously develop internal reinforcement learning algorithms, driven by external rewards. These internal algorithms enable the model to learn and optimize its language processing capabilities more efficiently than relying solely on external optimization methods such as genetic algorithms. Through meta-learning, Gol-LM can adaptively improve its performance and generalize across various language tasks in an online and continual manner. The model will learn the best inductive biases that practically work and interiorize them. Via external rewards it can learn to learn in a much faster way than provided with external optimizers.
 
 **Self-Reinforcement Learning**: Gol-LM hypothesizes the emergence of "Self-Reinforcement Learning". This involves a form of cognitive simulation or 'imagination', where Gol-LM internally generates scenarios, hypothesizes outcomes, and creates synthetic data and rewards. This self-simulation allows the model to strategize and evolve, mirroring the human ability to mentally forecast and plan before actual execution. By leveraging self-generated data, Gol-LM aims to achieve higher data efficiency and better generalization.
 
@@ -62,7 +62,7 @@ Gol-LM represents a cutting-edge exploration into the potential of cellular auto
 
 ### Initial Setup and Configuration
 
-Gol-LM operates on a two-dimensional grid, with each cell representing its state within the Game of Life (GoL) cellular automaton. inputs and rewards are forced as boundary conditions on the Gol board.
+Gol-LM operates on a two-dimensional grid, with each cell representing its state within the Game of Life (GoL) cellular automaton. Inputs and rewards are forced as boundary conditions on the Gol board.
 The grid is divided into specific regions:
 
 ![gollmpreview](https://github.com/user-attachments/assets/339917d0-55de-4d41-9a30-a993c80bbdf3)
@@ -95,7 +95,8 @@ Gol-LM dynamically determines halting based on output accumulation, ensuring eff
 8. **Repeat**: The model continues to generate tokens until the "End Of Sentence token", represented via a "|" in this case. In this way an entire sentence is generated.
 
 *Note: there are two nested iterative processes; the internal loop governs the process of generating a single token, and continues until a halting condition determined by output accumulation going over a threshold. The external loop governs the generation of an entire sentence token by token, and halts when the end of sentence token is generated.*
-*Furthermore, the memorization of the sentence is done inside the state space. Given the token **x_t** , we generate the token **x_t+1**, like in RNNs and differently from the transformers, where the entire sequence is given as input at each time step. This may arise long term memory issues, but the genetic algorithm training should allow for the development of internal mechanism to balance short and long term memory in order to minimize loss. Obiously, the larger is the state space the larger is the amount of storable memory.*
+*Furthermore, the memorization of the sentence is done inside the state space. Given the token **x_t** , we generate the token **x_t+1**, like in RNNs and differently from the transformers, where the entire sequence is given as input at each time step. This may arise long term memory issues, but the genetic algorithm training should allow for the development of internal mechanism to balance short and long term memory in order to minimize loss. Obviously, the larger the state space, the greater the amount of storable memory.*
+
 
 ## Challenges and Training
 
